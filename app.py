@@ -9,10 +9,6 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 CORS(app)
 
 # Your routes here
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @app.route('/start')
 def start():
     return render_template('start.html')
@@ -47,10 +43,8 @@ def submit():
 def success():
     return render_template('contact.html')
 
-@app.route('/hareth', methods=['POST'])
+@app.route('/hareth')
 def hareth():
-    user_input = request.form.get('user_input')
-    print(user_input)
     return render_template('index.html')
 
 if __name__ == '__main__':
