@@ -11706,6 +11706,14 @@ html {
     width: 1.5vw;
     left: -2vw;
   }
+  .wizard-slide {
+    display: none;
+  }
+
+  .wizard-slide.active {
+    display: block;
+  }
+
 }
 @media (min-width: 1200px) {
   .profile {

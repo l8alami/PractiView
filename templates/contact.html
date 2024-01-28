@@ -41,20 +41,21 @@
                     <div class="bg-light rounded-4 py-5 px-4 px-md-5">
                         <div class="text-center mb-5">
                             <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                            <h1 class="fw-bolder">Let's Begin</h1>
-                            <p class="lead fw-normal text-muted mb-0">Behavioural Test Starts Now!</p>
-                        </div>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <form action="/hareth" method="post">
+                            <h1 class="fw-bolder">Behavioural Test Starts Now!</h1>
+                            <p class="lead fw-normal text-muted mb-0">Let's Begin</p>
+                            <button id="recordButton" class="btn btn-danger">Start Recording</button>
+                            <div id="recordingIndicator" style="display: none;">Recording...</div>
+                            <div class="row gx-5 justify-content-center">
+                                <div class="col-lg-8 col-xl-6">
+                                    <!-- Box to display text -->
                                     <div class="form-group mb-3">
-                                        <textarea class="form-control" name="user_input" rows="3" placeholder="Enter your response here"></textarea>
+                                        <div class="text-box" style="background-color: #f8f9fa; border: 1px solid #ced4da; padding: 0.375rem 0.75rem; border-radius: 0.25rem;">
+                                            <!-- The text you want to display goes here -->
+                                            Your response will be shown here!
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>     
+                                    <button id="finishButton" class="btn btn-primary" onclick="location.href='/hareth'">Finish</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,5 +89,25 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var isRecording = false;
+                var recordButton = document.getElementById('recordButton');
+                var recordingIndicator = document.getElementById('recordingIndicator');
+                
+                recordButton.addEventListener('click', function() {
+                    isRecording = !isRecording;
+                    if (isRecording) {
+                        recordButton.textContent = 'Stop Recording';
+                        recordingIndicator.style.display = 'block';
+                        // Start actual recording logic here
+                    } else {
+                        recordButton.textContent = 'Start Recording';
+                        recordingIndicator.style.display = 'none';
+                        // Stop actual recording logic here
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

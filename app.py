@@ -45,6 +45,13 @@ def hareth():
         return render_template('index.html', user_input=user_input)
     return render_template('index.html')
 
+@app.route('/evaluate-answer', methods=['POST'])
+def evaluate_answer():
+    # Get the answer from the form
+    answer = request.form['user_answer']
+    # Here you would typically process the answer, evaluate it, etc.
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    # Render the evaluation page with any necessary data
+    return render_template('evaluation.html', answer=answer)
+
+

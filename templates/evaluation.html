@@ -22,7 +22,7 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">PractiView</span></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
@@ -37,36 +37,23 @@
             <!-- Page content-->
             <section class="py-5">
                 <div class="container px-5">
-                    <!-- Contact form-->
                     <div class="bg-light rounded-4 py-5 px-4 px-md-5">
                         <div class="text-center mb-5">
                             <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                            <h1 class="fw-bolder">Technical Test Will Start Now!</h1>
-                            <p class="lead fw-normal text-muted mb-0">Goodluck!</p>
+                            <h1 class="fw-bolder">Your Results!</h1>
+                            <p class="lead fw-normal text-muted mb-0">Here's how you did:</p>
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
-                                <div class="col-lg-8 col-xl-6">
-                                    <!-- Large text box to display the coding question -->
-                                    <div class="form-group mb-4">
-                                        <div class="question-box bg-white p-3" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
-                                            <!-- The coding question you want to display goes here -->
-                                            <p>What is the time complexity of a binary search algorithm?</p>
-                                        </div>
-                                    </div>
-                                    <!-- Response box where the user will enter their answer -->
-                                    <form id="answerForm" action="/evaluate-answer" method="post">
-                                        <div class="form-group mb-3">
-                                            <textarea class="form-control" name="user_answer" rows="6" placeholder="Enter your answer here"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Submit Answer</button>
-                                        </div>
-                                    </form>
+                                <!-- Results Display Box -->
+                                <div class="results-box bg-white p-3 mb-4" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
+                                    <!-- User results will be displayed here -->
+                                    <p>Your score: [User's Score]</p>
+                                    <!-- You can add more details about the results here -->
                                 </div>
-                                <!-- Timer display -->
-                                <div id="timer" style="position: absolute; bottom: 20px; right: 20px; color: red; font-size: 2rem; background-color: #fff; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                                <!-- Timer will be inserted here by the JavaScript -->
+                                <!-- Return to Home Page Button -->
+                                <div class="text-center">
+                                    <a href="/start" class="btn btn-primary">Return to Home Page</a>
                                 </div>
                             </div>
                         </div>
@@ -100,35 +87,6 @@
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script>
-            // Timer functionality
-            function startTimer(duration, display) {
-                var timer = duration, minutes, seconds;
-                var endInterval = setInterval(function () {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
-        
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-        
-                    display.textContent = minutes + ":" + seconds;
-        
-                    if (--timer < 0) {
-                        clearInterval(endInterval);
-                        // Handle what happens after the timer ends
-                        alert('Time is up!');
-                        // Optionally submit the form automatically or redirect
-                        // document.getElementById('answerForm').submit();
-                    }
-                }, 1000);
-            }
-        
-            window.onload = function () {
-                var fiveMinutes = 60 * 5,
-                    display = document.querySelector('#timer');
-                startTimer(fiveMinutes, display);
-            };
-        </script>        
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>    
     </body>
 </html>
