@@ -43,6 +43,13 @@
                             <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
                             <h1 class="fw-bolder">Behavioural Test Starts Now!</h1>
                             <p class="lead fw-normal text-muted mb-0">Let's Begin</p>
+                            <audio controls>
+                                {% if audio_file %}
+                                    <source src="{{ url_for('static', filename=audio_file) }}" type="audio/mpeg">
+
+                                    Your browser does not support the audio element.
+                                {% endif %}
+                            </audio>
                             <button id="recordButton" class="btn btn-danger">Start Recording</button>
                             <div id="recordingIndicator" style="display: none;">Recording...</div>
                             <div class="row gx-5 justify-content-center">
@@ -90,24 +97,41 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var isRecording = false;
-                var recordButton = document.getElementById('recordButton');
-                var recordingIndicator = document.getElementById('recordingIndicator');
-                
-                recordButton.addEventListener('click', function() {
-                    isRecording = !isRecording;
-                    if (isRecording) {
-                        recordButton.textContent = 'Stop Recording';
-                        recordingIndicator.style.display = 'block';
-                        // Start actual recording logic here
-                    } else {
-                        recordButton.textContent = 'Start Recording';
-                        recordingIndicator.style.display = 'none';
-                        // Stop actual recording logic here
-                    }
-                });
+            let mediaRecorder;
+            let audioChunks = [];
+        
+            document.getElementById("recordButton").addEventListener("click", function() {
+                if (!mediaRecorder || mediaRecorder.state === "inactive") {
+                    navigator.mediaDevices.getUserMedia({ audio: true })
+                        .then(stream => {
+                            mediaRecorder = new MediaRecorder(stream);
+                            mediaRecorder.ondataavailable = e => {
+                                audioChunks.push(e.data);
+                                if (mediaRecorder.state === "inactive") {
+                                    let blob = new Blob(audioChunks, { type: 'audio/mp3' });
+                                    sendData(blob);
+                                }
+                            };
+                            mediaRecorder.start();
+                        });
+                    this.textContent = 'Stop Recording';
+                } else {
+                    mediaRecorder.stop();
+                    this.textContent = 'Start Recording';
+                }
             });
-        </script>
+        
+            function sendData(blob) {
+                let formData = new FormData();
+                formData.append("audio_data", blob, "recording.mp3");
+                
+                fetch("/upload-audio", {
+                    method: "POST",
+                    body: formData
+                }).then(response => response.json()).then(data => {
+                    console.log(data);  // Handle the server response here
+                });
+            }
+        </script>        
     </body>
 </html>

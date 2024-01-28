@@ -1,1 +1,33 @@
-Hello
+As an Embedded Software/Hardware Engineer within KYNZE, you will be responsible for the coding of our different hardware platforms including BLE modules and firmware. The ideal candidate would have experience in analog and digital electronics, circuit design, simulation, and testing with a strong emphasis in microprocessor-based products.
+
+You will design electronic hardware related to each specific project including its related and optimized firmware. You will be responsible to document all designs and researches based on the company’s documentary protocol and keep updating the documents continuously.
+
+Requirements
+
+design/testingsystems/firmwareAcademic Requirements
+• Eng. in Electrical Engineering or equivalent with at least 3 years of technical experience
+
+Technical Skills
+• Strong Experience in Analog and Digital circuits
+• Experience in embedded systems / firmware development,
+• Experience with programming languages such as C++, Python, etc.
+• Understanding of communication protocols including I2C, SPI, UART, and USB
+• Experience in hands-on development and debug on embedded targets using in-circuit debuggers and electronic test equipment (scopes, meters)
+• Experience with Android or iOS application development is an asset
+• Experience with firmware/applications development for other wireless technologies is an asset.
+• Experience with wireless protocols such as BLE
+• Experience in the design / testing PCBs with Altium
+• Deep understanding of modern MCU architectures (Nordic, ESP32, STM32…)
+• Experience in bringing a product to market is an asset
+
+Communications Skills
+• Excellent oral and written communications and presentation skills
+• Ability to work effectively with a team of engineers
+• Ability to multi-task, set project priorities, establish task-focused goals and objectives for self and show initiative
+• Write clean, understandable, robust, and sustainable code tailored for embedded systems
+
+Benefits
+• Flexible hours but NO remote job
+• A stimulating work environment that mobilizes everyone's ideas
+• Free coffee / espresso / latte / Tea
+• Has the chance to be directly involved in the development of the project
