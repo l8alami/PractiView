@@ -46,16 +46,23 @@ def allowed_file(filename):
     # Check if the file has one of the allowed extensions
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'pdf', 'doc', 'docx'}
 
+from pydub import AudioSegment
+
 @app.route('/upload-audio', methods=['POST'])
 def upload_audio():
     if 'audio_data' in request.files:
         audio_file = request.files['audio_data']
-        # Save the file as 'response1.mp3' in the backend/uploads directory
-        filepath = os.path.join(upload_directory, 'response1.mp3')
-        audio_file.save(filepath)
-        return jsonify({'message': 'File uploaded successfully!'})
-    return jsonify({'error': 'No file part'}), 400
+        original_file_path = os.path.join(upload_directory, 'original_audio.webm')
+        converted_file_path = os.path.join(upload_directory, 'response1.mp3')
 
+        # Save the original file
+        audio_file.save(original_file_path)
+
+        # Convert to MP3
+        AudioSegment.from_file(original_file_path).export(converted_file_path, format='mp3')
+
+        return jsonify({'message': 'File uploaded and converted successfully!'})
+    return jsonify({'error': 'No file part'}), 400
 
 @app.route('/success')
 def success():

@@ -49,14 +49,40 @@
                                 <div class="col-lg-8 col-xl-6">
                                     <!-- Large text box to display the coding question -->
                                     <div class="form-group mb-4">
-                                        <div class="question-box bg-white p-3" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
+                                        <div class="question-box bg-white p-5" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
                                             <!-- The coding question you want to display goes here -->
-                                            <p>What is the time complexity of a binary search algorithm?</p>
+                                            <p>Longest Substring Without Repeating Characters
+                                                Given a string s, find the length of the longest substring without repeating characters.
+                                                
+                                                 
+                                                
+                                                Example 1:
+                                                
+                                                Input: s = "abcabcbb"
+                                                Output: 3
+                                                Explanation: The answer is "abc", with the length of 3.
+                                                Example 2:
+                                                
+                                                Input: s = "bbbbb"
+                                                Output: 1
+                                                Explanation: The answer is "b", with the length of 1.
+                                                Example 3:
+                                                
+                                                Input: s = "pwwkew"
+                                                Output: 3
+                                                Explanation: The answer is "wke", with the length of 3.
+                                                Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+                                                 
+                                                
+                                                Constraints:
+                                                
+                                                0 <= s.length <= 5 * 104
+                                                s consists of English letters, digits, symbols and spaces.</p>
                                         </div>
                                     </div>
                                     <!-- Response box where the user will enter their answer -->
                                     <form id="answerForm" action="/evaluate-answer" method="post">
-                                        <div class="form-group mb-3">
+                                        <div class="form-group mb-5">
                                             <textarea class="form-control" name="user_answer" rows="6" placeholder="Enter your answer here"></textarea>
                                         </div>
                                         <div class="form-group">
